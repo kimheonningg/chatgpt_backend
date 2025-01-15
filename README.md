@@ -5,7 +5,7 @@ This project implements a backend structure for chatting with Chat GPT using the
 ### Prerequisites
 
 1. API Key for OpenAI API is needed.
-2. Java and Spring Boot need to be installed.
+2. Java and Spring Boot must be installed.
 
 ### Set Up Instructions
 
