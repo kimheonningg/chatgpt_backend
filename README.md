@@ -12,6 +12,11 @@ This project implements a backend structure for chatting with Chat GPT using the
 - Create an `application.yml` file at `\src\main\resources\` directory,
   referencing the `example.application.yml` file provided.
 
+### Database Management
+
+- MySQL is used to manage the database.
+- DBeaver is used for database administration.
+
 ### Testing
 
 - Postman is used for testing.
