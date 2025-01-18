@@ -24,7 +24,7 @@ public class ChatGPTController {
     @PostMapping("/chatgpt")
     public Answer askChatGPT(@RequestBody Question question) {
         String answer = chatGPTService.askChatGPT(question.getPrompt(), question.getModelType(), question.getSystemMessage());
+        chatGPTService.saveHistory(question, new Answer(answer));
         return new Answer(answer);
     }
-    
 }

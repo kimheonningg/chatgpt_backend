@@ -9,17 +9,26 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import io.micrometer.common.lang.Nullable;
+import kimheonningg.chatgpt_backend.data.Answer;
 import kimheonningg.chatgpt_backend.data.ChatGPTChoice;
 import kimheonningg.chatgpt_backend.data.ChatGPTMessage;
 import kimheonningg.chatgpt_backend.data.ChatGPTRequest;
 import kimheonningg.chatgpt_backend.data.ChatGPTResponse;
+import kimheonningg.chatgpt_backend.data.Question;
+import kimheonningg.chatgpt_backend.entity.ChatGPTHistoryEntity;
+import kimheonningg.chatgpt_backend.repository.ChatGPTHistoryRepository;
 
 @Service
 public class ChatGPTService {
+
+    @Autowired
+    ChatGPTHistoryRepository historyRepository;
+
     @Value("${chatgpt_backend.chat-gpt-api-key}")
     private String CHAT_GPT_API_KEY;
 
@@ -99,5 +108,12 @@ public class ChatGPTService {
         ChatGPTChoice[] choices = chatGPTResponse.getChoices();
         String extracted = choices[choices.length-1].getMessage().getContent();
         return extracted;
+    }
+
+    public void saveHistory(Question question, Answer answer) {
+        ChatGPTHistoryEntity historyEntity = new ChatGPTHistoryEntity();
+        historyEntity.setQuestion(question.getPrompt());
+        historyEntity.setAnswer(answer.getAnswer());
+        historyEntity = historyRepository.saveAndFlush(historyEntity);
     }
 }

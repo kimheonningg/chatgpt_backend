@@ -1,2 +1,12 @@
 chatgpt_backend:
   chat-gpt-api-key:
+spring:
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name:
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy:
