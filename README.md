@@ -2,6 +2,10 @@
 
 This project implements a backend structure for chatting with Chat GPT using the OpenAI API, built with Spring Boot.
 
+### Features
+
+- Simple chatting functionality to recieve answers from Chat GPT for user questions.
+
 ### Prerequisites
 
 1. API Key for OpenAI API is needed.
@@ -11,6 +15,11 @@ This project implements a backend structure for chatting with Chat GPT using the
 
 - Create an `application.yml` file at `\src\main\resources\`,
   referencing the `example.application.yml` file provided.
+
+### Database Management
+
+- MySQL is used to manage the database.
+- DBeaver is used for database administration.
 
 ### Testing
 
