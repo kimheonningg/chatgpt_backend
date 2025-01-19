@@ -1,9 +1,9 @@
 package kimheonningg.chatgpt_backend.data;
 
 import io.micrometer.common.lang.Nullable;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Data
 @NoArgsConstructor

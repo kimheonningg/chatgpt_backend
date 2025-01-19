@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
 
 import io.micrometer.common.lang.Nullable;
 import kimheonningg.chatgpt_backend.data.Answer;
-import kimheonningg.chatgpt_backend.data.ChatGPTChoice;
-import kimheonningg.chatgpt_backend.data.ChatGPTMessage;
-import kimheonningg.chatgpt_backend.data.ChatGPTRequest;
-import kimheonningg.chatgpt_backend.data.ChatGPTResponse;
 import kimheonningg.chatgpt_backend.data.Question;
+import kimheonningg.chatgpt_backend.data.format.ChatGPTChoice;
+import kimheonningg.chatgpt_backend.data.format.ChatGPTMessage;
+import kimheonningg.chatgpt_backend.data.format.ChatGPTRequest;
+import kimheonningg.chatgpt_backend.data.format.ChatGPTResponse;
 import kimheonningg.chatgpt_backend.entity.ChatGPTHistoryEntity;
 import kimheonningg.chatgpt_backend.repository.ChatGPTHistoryRepository;
 
@@ -82,7 +82,7 @@ public class ChatGPTService {
 
         // set Chat GPT model
         if(modelType == null || modelType.isEmpty())
-            modelType = "gpt-4";
+            modelType = "gpt-3.5-turbo";
         request.setModel(modelType);
 
         List<ChatGPTMessage> messages = new ArrayList<>();
