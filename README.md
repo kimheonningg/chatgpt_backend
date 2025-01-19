@@ -19,7 +19,7 @@ This project implements a backend structure for chatting with Chat GPT using the
 
 ### Database Management
 
-- MySQL is used to manage the database.
+- MySQL is used to manage the database. MySQL is run using Docker.
 - DBeaver is used for database administration.
 
 ### Testing
