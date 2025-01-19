@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import kimheonningg.chatgpt_backend.data.Answer;
+import kimheonningg.chatgpt_backend.data.CodeInfo;
+import kimheonningg.chatgpt_backend.data.CodeReviewResponse;
 import kimheonningg.chatgpt_backend.data.Question;
 import kimheonningg.chatgpt_backend.data.TextSequence;
 import kimheonningg.chatgpt_backend.data.TextSequence.Language;
 import kimheonningg.chatgpt_backend.service.ChatGPTService;
+import kimheonningg.chatgpt_backend.service.CodeReviewService;
 import kimheonningg.chatgpt_backend.service.SummarizeService;
 
 
@@ -25,8 +28,10 @@ public class ChatGPTController {
     private ChatGPTService chatGPTService;
     @Autowired
     private SummarizeService summarizeService;
+    @Autowired
+    private CodeReviewService codeReviewService;
 
-    @PostMapping("/chatgpt")
+    @PostMapping("/qna")
     public Answer askChatGPT(@RequestBody Question question) {
         String answer = chatGPTService.askChatGPT(question.getPrompt(), question.getModelType(), question.getSystemMessage());
         chatGPTService.saveHistory(question, new Answer(answer));
@@ -43,5 +48,13 @@ public class ChatGPTController {
         String summarized = chatGPTService.askChatGPT(question.getPrompt(), question.getModelType(), question.getSystemMessage());
         chatGPTService.saveHistory(question, new Answer(summarized));
         return summarizeService.extractSummarized(summarized);
+    }
+
+    @PostMapping("/code-review")
+    public CodeReviewResponse askCodeReview(@RequestBody CodeInfo codeInfo) {
+        Question question = codeReviewService.makeChatGPTQuestion(codeInfo);
+        String reviewed = chatGPTService.askChatGPT(question.getPrompt(), question.getModelType(), question.getSystemMessage());
+        chatGPTService.saveHistory(question, new Answer(reviewed));
+        return codeReviewService.extractReviewed(reviewed);
     }
 }
