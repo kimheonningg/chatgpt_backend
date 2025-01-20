@@ -9,7 +9,9 @@ import kimheonningg.chatgpt_backend.data.TextSummarized;
 import kimheonningg.chatgpt_backend.data.TextSequence.Language;
 
 @Service
-public class SummarizeService {
+public class SummarizeService implements SpecificService<TextSequence, Language, Answer> {
+    
+    @Override
     public Question makeChatGPTQuestion(TextSequence textSequence) {
         Question question = new Question();
         
@@ -47,7 +49,8 @@ public class SummarizeService {
         return question;
     }
 
-    private String generateJSON(Language language) {
+    @Override
+    public String generateJSON(Language language) {
         if(language == Language.KOREAN) {
             TextSummarized summarized = new TextSummarized("요약된 글");
             return summarized.serialize();
@@ -61,7 +64,8 @@ public class SummarizeService {
         }
     }
 
-    public Answer extractSummarized(String summarized) {
+    @Override
+    public Answer extractAnswer(String summarized) {
         TextSummarized deserialized = new TextSummarized();
         deserialized = deserialized.deserialize(summarized);
         return new Answer(deserialized.getSummarized());

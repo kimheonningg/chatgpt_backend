@@ -47,7 +47,7 @@ public class ChatGPTController {
         Question question = summarizeService.makeChatGPTQuestion(textSequence);
         String summarized = chatGPTService.askChatGPT(question.getPrompt(), question.getModelType(), question.getSystemMessage());
         chatGPTService.saveHistory(question, new Answer(summarized));
-        return summarizeService.extractSummarized(summarized);
+        return summarizeService.extractAnswer(summarized);
     }
 
     @PostMapping("/code-review")
@@ -55,6 +55,6 @@ public class ChatGPTController {
         Question question = codeReviewService.makeChatGPTQuestion(codeInfo);
         String reviewed = chatGPTService.askChatGPT(question.getPrompt(), question.getModelType(), question.getSystemMessage());
         chatGPTService.saveHistory(question, new Answer(reviewed));
-        return codeReviewService.extractReviewed(reviewed);
+        return codeReviewService.extractAnswer(reviewed);
     }
 }

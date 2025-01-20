@@ -7,8 +7,9 @@ import kimheonningg.chatgpt_backend.data.CodeReviewResponse;
 import kimheonningg.chatgpt_backend.data.Question;
 
 @Service
-public class CodeReviewService {
+public class CodeReviewService implements SpecificService<CodeInfo, CodeReviewResponse, CodeReviewResponse>{
 
+    @Override
     public Question makeChatGPTQuestion(CodeInfo codeInfo) {
         Question question = new Question();
 
@@ -37,11 +38,13 @@ public class CodeReviewService {
         return question;
     }
 
-    private String generateJSON(CodeReviewResponse reviewed) {
+    @Override
+    public String generateJSON(CodeReviewResponse reviewed) {
         return reviewed.serialize();
     }
 
-    public CodeReviewResponse extractReviewed(String reviewed) {
+    @Override
+    public CodeReviewResponse extractAnswer(String reviewed) {
         CodeReviewResponse deserialized = new CodeReviewResponse();
         deserialized = deserialized.deserialize(reviewed);
         return deserialized;
