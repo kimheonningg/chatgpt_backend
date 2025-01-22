@@ -7,6 +7,7 @@ This project implements a backend structure for chatting with Chat GPT using the
 - Simple chatting functionality to recieve answers from Chat GPT for user questions.
 - Summarizes given text in Korean or English to a specified number of sentences.
 - Analyzes provided code, corrects it, and reports the number of errors identified.
+- Detects the language used in the provided text.
 
 ### Prerequisites
 
