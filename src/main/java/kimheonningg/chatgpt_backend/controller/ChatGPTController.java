@@ -12,10 +12,12 @@ import kimheonningg.chatgpt_backend.data.Answer;
 import kimheonningg.chatgpt_backend.data.Question;
 import kimheonningg.chatgpt_backend.data.code_review.CodeInfo;
 import kimheonningg.chatgpt_backend.data.code_review.CodeReviewResponse;
+import kimheonningg.chatgpt_backend.data.language_detect.LanguageInfo;
 import kimheonningg.chatgpt_backend.data.summarize.TextSequence;
 import kimheonningg.chatgpt_backend.data.summarize.TextSequence.Language;
 import kimheonningg.chatgpt_backend.service.ChatGPTService;
 import kimheonningg.chatgpt_backend.service.specific.CodeReviewService;
+import kimheonningg.chatgpt_backend.service.specific.LanguageDetectService;
 import kimheonningg.chatgpt_backend.service.specific.SummarizeService;
 
 
@@ -30,6 +32,8 @@ public class ChatGPTController {
     private SummarizeService summarizeService;
     @Autowired
     private CodeReviewService codeReviewService;
+    @Autowired
+    private LanguageDetectService languageDetectService;
 
     @PostMapping("/qna")
     public Answer askChatGPT(@RequestBody Question question) {
@@ -57,4 +61,13 @@ public class ChatGPTController {
         chatGPTService.saveHistory(question, new Answer(reviewed));
         return codeReviewService.extractAnswer(reviewed);
     }
+    
+    @PostMapping("/detect-language")
+    public LanguageInfo detectLanguage(@RequestBody String text) {
+        Question question = languageDetectService.makeChatGPTQuestion(text);
+        String language = chatGPTService.askChatGPT(question.getPrompt(), question.getModelType(), question.getSystemMessage());
+        chatGPTService.saveHistory(question, new Answer(language));
+        return languageDetectService.extractAnswer(language);
+    }
+    
 }
