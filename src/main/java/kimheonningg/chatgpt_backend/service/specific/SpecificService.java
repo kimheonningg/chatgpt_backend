@@ -1,4 +1,4 @@
-package kimheonningg.chatgpt_backend.service;
+package kimheonningg.chatgpt_backend.service.specific;
 
 import org.springframework.stereotype.Service;
 

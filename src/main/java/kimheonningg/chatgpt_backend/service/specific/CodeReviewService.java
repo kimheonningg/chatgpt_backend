@@ -1,10 +1,10 @@
-package kimheonningg.chatgpt_backend.service;
+package kimheonningg.chatgpt_backend.service.specific;
 
 import org.springframework.stereotype.Service;
 
-import kimheonningg.chatgpt_backend.data.CodeInfo;
-import kimheonningg.chatgpt_backend.data.CodeReviewResponse;
 import kimheonningg.chatgpt_backend.data.Question;
+import kimheonningg.chatgpt_backend.data.code_review.CodeInfo;
+import kimheonningg.chatgpt_backend.data.code_review.CodeReviewResponse;
 
 @Service
 public class CodeReviewService implements SpecificService<CodeInfo, CodeReviewResponse, CodeReviewResponse>{

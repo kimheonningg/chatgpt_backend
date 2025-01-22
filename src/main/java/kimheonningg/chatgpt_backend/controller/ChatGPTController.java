@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import kimheonningg.chatgpt_backend.data.Answer;
-import kimheonningg.chatgpt_backend.data.CodeInfo;
-import kimheonningg.chatgpt_backend.data.CodeReviewResponse;
 import kimheonningg.chatgpt_backend.data.Question;
-import kimheonningg.chatgpt_backend.data.TextSequence;
-import kimheonningg.chatgpt_backend.data.TextSequence.Language;
+import kimheonningg.chatgpt_backend.data.code_review.CodeInfo;
+import kimheonningg.chatgpt_backend.data.code_review.CodeReviewResponse;
+import kimheonningg.chatgpt_backend.data.summarize.TextSequence;
+import kimheonningg.chatgpt_backend.data.summarize.TextSequence.Language;
 import kimheonningg.chatgpt_backend.service.ChatGPTService;
-import kimheonningg.chatgpt_backend.service.CodeReviewService;
-import kimheonningg.chatgpt_backend.service.SummarizeService;
+import kimheonningg.chatgpt_backend.service.specific.CodeReviewService;
+import kimheonningg.chatgpt_backend.service.specific.SummarizeService;
 
 
 @RestController

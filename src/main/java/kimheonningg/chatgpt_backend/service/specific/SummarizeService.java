@@ -1,12 +1,12 @@
-package kimheonningg.chatgpt_backend.service;
+package kimheonningg.chatgpt_backend.service.specific;
 
 import org.springframework.stereotype.Service;
 
 import kimheonningg.chatgpt_backend.data.Answer;
 import kimheonningg.chatgpt_backend.data.Question;
-import kimheonningg.chatgpt_backend.data.TextSequence;
-import kimheonningg.chatgpt_backend.data.TextSummarized;
-import kimheonningg.chatgpt_backend.data.TextSequence.Language;
+import kimheonningg.chatgpt_backend.data.summarize.TextSequence;
+import kimheonningg.chatgpt_backend.data.summarize.TextSummarized;
+import kimheonningg.chatgpt_backend.data.summarize.TextSequence.Language;
 
 @Service
 public class SummarizeService implements SpecificService<TextSequence, Language, Answer> {

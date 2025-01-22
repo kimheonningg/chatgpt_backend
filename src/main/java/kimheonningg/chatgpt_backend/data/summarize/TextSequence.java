@@ -1,4 +1,4 @@
-package kimheonningg.chatgpt_backend.data;
+package kimheonningg.chatgpt_backend.data.summarize;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

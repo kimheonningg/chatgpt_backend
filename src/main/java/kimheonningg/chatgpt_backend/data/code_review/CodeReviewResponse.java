@@ -1,4 +1,4 @@
-package kimheonningg.chatgpt_backend.data;
+package kimheonningg.chatgpt_backend.data.code_review;
 
 import com.google.gson.Gson;
 
